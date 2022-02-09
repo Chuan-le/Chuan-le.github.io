@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            font-family: "Poppins", sans-serif;
+        }
+        
+        body>div {
+            margin: 5% auto 0;
+            max-width: 720px;
+        }
+        
+        .tabs {
+            display: flex;
+            position: relative;
+        }
+        
+        .tabs .line {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 6px;
+            border-radius: 15px;
+            background-color: #24B5DA;
+            transition: all 0.2s ease;
+        }
+        
+        .tab-item {
+            min-width: 80px;
+            padding: 16px 20px 11px 20px;
+            font-size: 20px;
+            text-align: center;
+            color: #33D1E6;
+            background-color: #fff;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom: 5px solid transparent;
+            opacity: 0.6;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+        
+        .tab-icon {
+            font-size: 24px;
+            width: 32px;
+            position: relative;
+            top: 2px;
+        }
+        
+        .tab-item:hover {
+            opacity: 1;
+            background-color: rgba(194, 53, 100, 0.05);
+            border-color: rgba(194, 53, 100, 0.1);
+        }
+        
+        .tab-item.active {
+            opacity: 1;
+        }
+        
+        .tab-content {
+            padding: 28px 0;
+        }
+        
+        .tab-pane {
+            color: #333;
+            display: none;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        .tab-pane h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+
+    <div>
+        <!-- Tab items -->
+        <div class="tabs">
+            <div class="tab-item active">
+                <i class="fas fa-user-graduate"></i> Personal details
+            </div>
+            <div class="tab-item">
+                <i class="fas fa-graduation-cap"></i> Education and qualification
+            </div>
+            <div class="tab-item">
+                <i class="tab-icon fas fa-plus-circle"></i> Skills
+            </div>
+            <div class="tab-item">
+                <i class="fas fa-trophy"></i> Achievements
+            </div>
+
+            <div class="line"></div>
+        </div>
+
+        <!-- Tab content -->
+        <div class="tab-content">
+            <div class="tab-pane active">
+                <h2>LÊ VĂN CHUẨN</h2>
+                <p>I am currently a 4th year IT student at Hue University of Science, looking forward to participating in an internship in the company's professional working environment, in order to form and develop perfect career skills, grasping opportunity
+                    to learn and absorb new knowledge.</p>
+                <p>
+                    <h3>CONTACT INFO
+                    </h3>
+                    <h4>Mobile: 0383388235
+                    </h4>
+                    <h4>
+                        Email: chuanle2018.3010@gmail.com
+                    </h4>
+                    <h4>
+                        Facebook: https://www.facebook.com/chuan.lee.jjk.168/
+                    </h4>
+                    <h4>Address: Chau Chu, Group 10, Area 5, Ward. AnTay, City Hue
+                    </h4>
+                </p>
+            </div>
+            <div class="tab-pane">
+                <h2>Hue University of Science</h2>
+                <p>
+                    <h3>IT</h3>
+                    <h3>GPA: 2.5</h3>
+                </p>
+            </div>
+            <div class="tab-pane">
+                <h2>Skills</h2>
+                <p>
+                    <h4> <i class="fas fa-star"></i>Presentation skills</h4>
+                    <h4><i class="fas fa-star"></i>Negotiation skills</h4>
+                    <h4><i class="fas fa-star"></i>Leader ship skills</h4>
+                    <h4><i class="fas fa-star"></i>Public speaking skills</h4>
+                    <h4><i class="fas fa-star"></i>Planning</h4>
+
+                </p>
+            </div>
+            <div class="tab-pane">
+                <h2>Achievements</h2>
+                <p>Codelearn.io basic java certificate</p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        const $ = document.querySelector.bind(document);
+        const $$ = document.querySelectorAll.bind(document);
+
+        const tabs = $$(".tab-item");
+        const panes = $$(".tab-pane");
+        const underline = $('.line');
+
+        tabs.forEach((tab, index) => {
+            const pane = panes[index];
+            tab.addEventListener("click", function() {
+
+                $('.tab-item.active').classList.remove("active");
+                this.classList.add("active");
+
+                $('.tab-pane.active').classList.remove('active');
+                pane.classList.add('active');
+
+                underline.style.width = `${tab.getBoundingClientRect().width}px`;
+                underline.style.left = `${tab.offsetLeft}px`;
+            })
+        })
+    </script>
+
+</body>
+
+</html>
